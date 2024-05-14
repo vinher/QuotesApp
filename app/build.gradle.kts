@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+
 }
 
 android {
@@ -36,6 +39,8 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
+
 }
 
 dependencies {
@@ -49,13 +54,30 @@ dependencies {
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
-    //ViewModel
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
-    //LiveData
-    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
-    //Fragment
+    // Fragment
     implementation ("androidx.fragment:fragment-ktx:1.3.2")
-    //Activity
+    // Activity
     implementation ("androidx.activity:activity-ktx:1.2.2")
+    // ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+    // LiveData
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.3.1")
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    //Corrutinas
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+    //dagger hilt
+    implementation ("com.google.dagger:hilt-android:2.48")
+    kapt ("com.google.dagger:hilt-android-compiler:2.48")
+    //Room
+    implementation ("androidx.room:room-ktx:2.6.1")
+    kapt ("androidx.room:room-compiler:2.6.1")
+
+
 
 }
+kapt {
+    correctErrorTypes = true
+}
+
